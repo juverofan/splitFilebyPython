@@ -50,8 +50,13 @@ def createFolder(folder):
 		#os.system(cmd)
 		#os.system('mkdir '+folder)
 		print(folder+"'s exists.")
+
+def getLines(files):
+	with open(files) as f:
+		return sum(1 for _ in f)
 		
 createFolder(output)
+
 
 #files = [f for f in listdir(folder) if isfile(join(folder, f))]				
 
@@ -62,8 +67,9 @@ createFolder(output)
 i = 0
 infile = open(filex,'r')
 filename = filex.split("/")[len(filex.split("/"))-1]
-first_line = infile.readline()
-seq = first_line.split(" ")
+#first_line = infile.readline()
+#seq = first_line.split(" ")
+seq = getLines(filex)
 
 if(os.path.isfile(output+"/"+filename+"_1")):
 	os.system('rm '+output+"/"+filename+"_1")
@@ -75,11 +81,11 @@ if(os.path.isfile(output+"/"+filename+"_2")):
 first_file = open(output+"/"+filename+"_1","w+")
 second_file = open(output+"/"+filename+"_2","w+")
 
-first_number = int(round(int(seq[0])*ratex))
-first_file.write(str(first_number)+" "+str(seq[1]))
+first_number = int(round(int(seq)*ratex))
+#first_file.write(str(first_number)+" "+str(seq[1]))
 
-second_number = int(seq[0])-int(round(int(seq[0])*ratex))
-second_file.write(str(second_number)+" "+str(seq[1]))
+second_number = int(seq)-int(round(int(seq)*ratex))
+#second_file.write(str(second_number)+" "+str(seq[1]))
 
 for line in infile:
 	if(i < first_number):
