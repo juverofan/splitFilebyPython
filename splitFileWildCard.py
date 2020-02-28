@@ -31,7 +31,7 @@ folder = args.directory
 if args.wildcard:
 	wildcard = args.wildcard
 else:
-	wildcard = "influeza.data"
+	wildcard = "data"
 
 if args.ratex:
 	ratex = float(args.ratex)
